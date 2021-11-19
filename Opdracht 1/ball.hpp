@@ -2,11 +2,14 @@
 #define _BALL_HPP
 
 #include <SFML/Graphics.hpp>
+#include "drawables.hpp"
 
-class ball {
+class ball : public drawable{
 public:
 
-	ball( sf::Vector2f position, float size = 30.0 );
+	ball( sf::Vector2f pos, float size = 30.0 );
+
+	
 
 	void draw( sf::RenderWindow & window ) const;
 
@@ -16,7 +19,6 @@ public:
 	void jump( sf::Vector2i target );
 
 private:
-	sf::Vector2f position;
 	float size;
 };
 

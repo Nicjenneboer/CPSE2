@@ -2,6 +2,7 @@
 #include <functional>
 #include <SFML/Graphics.hpp>
 #include "ball.hpp"
+#include "rectangle.hpp"
 
 class action {
 private:
@@ -47,6 +48,7 @@ int main( int argc, char *argv[] ){
 
 	sf::RenderWindow window{ sf::VideoMode{ 640, 480 }, "SFML window" };
 	ball my_ball{ sf::Vector2f{ 320.0, 240.0 } };
+	rectangle my_rectangle { sf::Vector2f{ 0, 0 }, sf::Vector2f{ 10, 10 }};
 
 	action actions[] = {
 		action( sf::Keyboard::Left,  [&](){ my_ball.move( sf::Vector2f( -1.0,  0.0 )); }),
@@ -63,6 +65,7 @@ int main( int argc, char *argv[] ){
 
 		window.clear();
 		my_ball.draw( window );
+		my_rectangle.draw( window );
 		window.display();
 
 		sf::sleep( sf::milliseconds( 20 ));
