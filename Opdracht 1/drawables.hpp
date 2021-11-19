@@ -4,15 +4,16 @@
 #include <SFML/Graphics.hpp>
 
 class drawable {
-private:
-    
+protected:
+    sf::RenderWindow & window;
+
+    sf::Vector2f pos;    
 
 public:
-    sf::Vector2f pos;
 
-    drawable(sf::Vector2f pos);
+    drawable(sf::RenderWindow & window, sf::Vector2f & pos);
 
-    virtual void draw() {};
+    virtual void draw() = 0;
 
 
 };

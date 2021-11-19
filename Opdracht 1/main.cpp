@@ -1,8 +1,10 @@
 #include <iostream>
 #include <functional>
 #include <SFML/Graphics.hpp>
+#include <array>
 #include "ball.hpp"
 #include "rectangle.hpp"
+#include "drawables.hpp"
 
 class action {
 private:
@@ -47,8 +49,11 @@ int main( int argc, char *argv[] ){
 	std::cout << "Starting application 01-05 array of actions\n";
 
 	sf::RenderWindow window{ sf::VideoMode{ 640, 480 }, "SFML window" };
-	ball my_ball{ sf::Vector2f{ 320.0, 240.0 } };
-	rectangle my_rectangle { sf::Vector2f{ 0, 0 }, sf::Vector2f{ 10, 10 }};
+	ball my_ball{ window, sf::Vector2f{ 320.0, 240.0 } };
+	rectangle my_rectangle { window, sf::Vector2f{ 0, 0 }, sf::Vector2f{ 10, 10 }};
+
+
+	std::array< drawable*, 2 > drawables = { &my_ball, &my_rectangle };
 
 	action actions[] = {
 		action( sf::Keyboard::Left,  [&](){ my_ball.move( sf::Vector2f( -1.0,  0.0 )); }),
@@ -64,8 +69,9 @@ int main( int argc, char *argv[] ){
 		}
 
 		window.clear();
-		my_ball.draw( window );
-		my_rectangle.draw( window );
+		for( auto & object : drawables){
+			object->draw();
+		}
 		window.display();
 
 		sf::sleep( sf::milliseconds( 20 ));

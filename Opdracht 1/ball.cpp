@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "ball.hpp"
 
-ball::ball( sf::Vector2f pos, float size ) :
-	drawable{pos},
+ball::ball( sf::RenderWindow & window, sf::Vector2f pos, float size ) :
+	drawable{window, pos},
 	size{size}
 {}
 	
 
-void ball::draw( sf::RenderWindow & window ) const {
+void ball::draw() {
 	sf::CircleShape circle;
 	circle.setRadius(size);
 	circle.setPosition(pos);

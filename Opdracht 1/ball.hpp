@@ -7,11 +7,11 @@
 class ball : public drawable{
 public:
 
-	ball( sf::Vector2f pos, float size = 30.0 );
+	ball( sf::RenderWindow & window, sf::Vector2f pos, float size = 30.0 );
 
 	
 
-	void draw( sf::RenderWindow & window ) const;
+	void draw() override;
 
 	void move( sf::Vector2f delta );
 

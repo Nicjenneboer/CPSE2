@@ -11,9 +11,9 @@ private:
 
 public:
 
-	rectangle( sf::Vector2f pos, sf::Vector2f size );
+	rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size );
 
-	void draw( sf::RenderWindow & window ) const;
+	void draw() override;
 
 	// void move( sf::Vector2f delta );
 

@@ -1,5 +1,6 @@
 #include "drawables.hpp"
 
-drawable::drawable( sf::Vector2f pos ) :
+drawable::drawable(sf::RenderWindow & window, sf::Vector2f & pos ) :
+    window{ window },
 	pos{ pos }
 {}
