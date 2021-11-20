@@ -1,8 +1,22 @@
-#ifndef _RECTANGLE_HPP
-#define _RECTANGLE_HPP
+#ifndef _SHAPES_HPP
+#define _SHAPES_HPP
 
 #include <SFML/Graphics.hpp>
 #include "drawables.hpp"
+
+class circle : public drawable{
+private:
+	float radius;
+	sf::CircleShape shape;
+
+public:
+
+	circle( sf::RenderWindow & window, sf::Vector2f pos, float radius );
+
+	void draw() override;
+
+
+};
 
 class rectangle : public drawable{
 
@@ -15,10 +29,6 @@ public:
 
 	void draw() override;
 
-	// void move( sf::Vector2f delta );
-
-	// void jump( sf::Vector2f target );
-	// void jump( sf::Vector2i target );
 };
 
 #endif

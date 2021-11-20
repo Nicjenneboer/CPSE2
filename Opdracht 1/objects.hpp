@@ -1,0 +1,32 @@
+#ifndef _OBJECTS_HPP
+#define _OBJECTS_HPP
+
+#include <SFML/Graphics.hpp>
+#include "shapes.hpp"
+
+
+class ball : public circle{
+private:
+	sf::Vector2f direction = sf::Vector2f{1,1};
+	float speed = 5;
+
+public:
+
+	ball( sf::RenderWindow & window, sf::Vector2f pos, float radius = 30.0 );
+
+	void move();
+
+
+};
+
+class wall : public rectangle{
+private:
+
+
+public:
+
+    wall(  sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size  );
+
+};
+
+#endif

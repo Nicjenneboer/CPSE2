@@ -2,9 +2,7 @@
 #include <functional>
 #include <SFML/Graphics.hpp>
 #include <array>
-#include "ball.hpp"
-#include "rectangle.hpp"
-#include "drawables.hpp"
+#include "objects.hpp"
 
 class action {
 private:
@@ -38,6 +36,13 @@ public:
 		work(work)
 	{}
 
+	action( std::function< void() > work ):
+		condition(
+			[]()->bool { return true; }
+		),
+		work(work)
+	{}
+
 	void operator()(){
 		if( condition() ){
 			work();
@@ -49,18 +54,19 @@ int main( int argc, char *argv[] ){
 	std::cout << "Starting application 01-05 array of actions\n";
 
 	sf::RenderWindow window{ sf::VideoMode{ 640, 480 }, "SFML window" };
-	ball my_ball{ window, sf::Vector2f{ 320.0, 240.0 } };
-	rectangle my_rectangle { window, sf::Vector2f{ 0, 0 }, sf::Vector2f{ 10, 10 }};
+	ball ball{ window, sf::Vector2f{ 320.0, 240.0 } };
+	wall my_rectangle { window, sf::Vector2f{ 0, 0 }, sf::Vector2f{ 10, 10 }};
 
 
-	std::array< drawable*, 2 > drawables = { &my_ball, &my_rectangle };
+	std::array< drawable*, 2 > drawables = { &ball, &my_rectangle };
 
 	action actions[] = {
-		action( sf::Keyboard::Left,  [&](){ my_ball.move( sf::Vector2f( -1.0,  0.0 )); }),
-		action( sf::Keyboard::Right, [&](){ my_ball.move( sf::Vector2f( +1.0,  0.0 )); }),
-		action( sf::Keyboard::Up,    [&](){ my_ball.move( sf::Vector2f(  0.0, -1.0 )); }),
-		action( sf::Keyboard::Down,  [&](){ my_ball.move( sf::Vector2f(  0.0, +1.0 )); }),
-		action( sf::Mouse::Left,     [&](){ my_ball.jump( sf::Mouse::getPosition( window )); })
+		action( [&](){ ball.move(); }),
+	// 	action( sf::Keyboard::Left,  [&](){ my_ball.move( sf::Vector2f( -1.0,  0.0 )); }),
+	// 	action( sf::Keyboard::Right, [&](){ my_ball.move( sf::Vector2f( +1.0,  0.0 )); }),
+	// 	action( sf::Keyboard::Up,    [&](){ my_ball.move( sf::Vector2f(  0.0, -1.0 )); }),
+	// 	action( sf::Keyboard::Down,  [&](){ my_ball.move( sf::Vector2f(  0.0, +1.0 )); }),
+	// 	action( sf::Mouse::Left,     [&](){ my_ball.jump( sf::Mouse::getPosition( window )); })
 	};
 
 	while (window.isOpen()) {
