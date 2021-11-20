@@ -12,15 +12,17 @@ void circle::draw() {
 	window.draw(shape);
 }
 
-rectangle::rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size ) :
+rectangle::rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size, sf::Color color ) :
 	drawable{ window, pos, size },
-	size{ size }
+	size{ size },
+    color{ color }
 {}
 
 void rectangle::draw() {
 	sf::RectangleShape rectangle;
     rectangle.setPosition(pos);
     rectangle.setSize(size);
+    rectangle.setFillColor(color);
 	window.draw(rectangle);
 }
 

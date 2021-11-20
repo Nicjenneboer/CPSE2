@@ -22,10 +22,11 @@ class rectangle : public drawable{
 
 private:
 	sf::Vector2f size;
+    sf::Color color;
 
 public:
 
-	rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size );
+	rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size, sf::Color color );
 
 	void draw() override;
 

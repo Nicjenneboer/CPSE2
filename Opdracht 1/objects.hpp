@@ -25,8 +25,19 @@ private:
 
 public:
 
-    wall(  sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size  );
+    wall( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size,  sf::Color color = sf::Color::White );
 
+};
+
+class block : public rectangle{
+private:
+    float speed = 2;
+
+public:
+
+    block( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size,  sf::Color color = sf::Color::White );
+
+    void move( sf::Vector2f delta );
 };
 
 #endif
