@@ -55,20 +55,20 @@ int main( int argc, char *argv[] ){
 
 	sf::RenderWindow window{ sf::VideoMode{ 640, 480 }, "SFML window" };
 	ball ball{ window, sf::Vector2f{ 320.0, 240.0 } };
-	block block{window, sf::Vector2f{ 100, 100 }, sf::Vector2f{ 30, 30 }, sf::Color::Blue};
+	block mblock{window, sf::Vector2f{ 100, 100 }, sf::Vector2f{ 30, 30 }, sf::Color::Blue};
 	wall wall_top{ window, sf::Vector2f{ 20, 0 }, sf::Vector2f{ 600, 20 }, sf::Color::Green };
 	wall wall_left{ window, sf::Vector2f{ 0, 0 }, sf::Vector2f{ 20, 480 }, sf::Color::Green };
 	wall wall_right{ window, sf::Vector2f{ 620, 0 }, sf::Vector2f{ 20, 480 }, sf::Color::Green };
 	wall wall_bottom{ window, sf::Vector2f{ 20, 460 }, sf::Vector2f{ 620, 20 }, sf::Color::Green };
 
-	std::array< drawable*, 6 > drawables = { &ball, &block, &wall_top, &wall_left, &wall_right, &wall_bottom };
+	std::array< drawable*, 6 > drawables = { &ball, &mblock, &wall_top, &wall_left, &wall_right, &wall_bottom };
 
 	action actions[] = {
 		action( [&](){ ball.move(); }),
-		action( sf::Keyboard::Left,  [&](){ block.move( sf::Vector2f( -1.0,  0.0 )); }),
-		action( sf::Keyboard::Right, [&](){ block.move( sf::Vector2f( +1.0,  0.0 )); }),
-		action( sf::Keyboard::Up,    [&](){ block.move( sf::Vector2f(  0.0, -1.0 )); }),
-		action( sf::Keyboard::Down,  [&](){ block.move( sf::Vector2f(  0.0, +1.0 )); }),
+		action( sf::Keyboard::Left,  [&](){ mblock.move( sf::Vector2f( -1.0,  0.0 )); }),
+		action( sf::Keyboard::Right, [&](){ mblock.move( sf::Vector2f( +1.0,  0.0 )); }),
+		action( sf::Keyboard::Up,    [&](){ mblock.move( sf::Vector2f(  0.0, -1.0 )); }),
+		action( sf::Keyboard::Down,  [&](){ mblock.move( sf::Vector2f(  0.0, +1.0 )); }),
 	// 	action( sf::Mouse::Left,     [&](){ my_ball.jump( sf::Mouse::getPosition( window )); })
 	};
 

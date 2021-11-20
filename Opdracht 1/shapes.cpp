@@ -20,7 +20,7 @@ rectangle::rectangle( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f 
 
 void rectangle::draw() {
 	sf::RectangleShape rectangle;
-    rectangle.setPosition(pos);
+    rectangle.setPosition(box.left, box.top);
     rectangle.setSize(size);
     rectangle.setFillColor(color);
 	window.draw(rectangle);
