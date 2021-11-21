@@ -17,9 +17,7 @@ public:
 
     virtual void move(){};
 
-    bool intersect( const drawable & other){
-        return this->box.intersects(other.box);
-    }
+    bool intersect( const drawable & other);
 
 
 };

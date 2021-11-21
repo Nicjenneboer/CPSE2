@@ -12,9 +12,11 @@ private:
 
 public:
 
-	ball( sf::RenderWindow & window, sf::Vector2f pos, float radius = 30.0 );
+	ball( sf::RenderWindow & window, sf::Vector2f pos, float radius, sf::Color color );
 
 	void move();
+
+    void change_direction(const drawable & object);
 
 
 };
@@ -37,7 +39,7 @@ public:
 
     block( sf::RenderWindow & window, sf::Vector2f pos, sf::Vector2f size,  sf::Color color = sf::Color::White );
 
-    void move( sf::Vector2f delta );
+    void move( const sf::Vector2f & delta );
 };
 
 #endif
